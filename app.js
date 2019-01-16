@@ -1,9 +1,15 @@
 import store from './store/store';
-import { addReceipent } from './action/recipe';
 
+import { addReceipent } from './action/recipe';
+import { addIngredient } from './action/ingredient';
 
 
 store.dispatch(addReceipent("Bakso"));
+store.dispatch(addIngredient('Bakso', 'Daging kambing', 5));
+
+
+store.dispatch(addReceipent("Martabak"));
+store.dispatch(addIngredient('Martabak', 'Terigu', 100));
 
 window.store = store;
 

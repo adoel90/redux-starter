@@ -1,4 +1,5 @@
 import { createStore } from 'redux';
+import rootReducer from '../reducer/index';
 
 const initialState = {
 	recipes: [
@@ -12,27 +13,6 @@ const initialState = {
 		}]
 };
 
-const reducer = (state, action) => {
-	switch (action.type){
-		case 'ADD_RECIPE':
-			return Object.assign({}, state, {
-				recipes: state.recipes.concat({name: action.name})
-			});
+const store = createStore(rootReducer, initialState);
 
-		case 'ADD_INGREDIENT':
-			const newIngredient = {
-				recipes: action.recipes,
-				name: action.name,
-				quantity: action.quantity
-			};
-			
-			return Object.assign({}, state, {
-				ingredients: state.ingredients.concat(newIngredient)
-			});
-
-	}
-
-	return state;
-};
-
-export default store = createStore(reducer, initialState);
+export default store;
