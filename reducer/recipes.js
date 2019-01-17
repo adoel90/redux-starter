@@ -1,6 +1,10 @@
+
+
+const ADD_RECIPE = 'ADD_RECIPE';
+
 const recipesReducer = (recipes, action) =>{
     switch (action.type){
-        case 'ADD_RECIPE':
+        case ADD_RECIPE :
             return recipes.concat({name: action.name})
     }
 
