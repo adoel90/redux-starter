@@ -1,4 +1,4 @@
-#State as a Database || Chapter 3
+###State as a Database || Chapter 3
 
 * Normalize State Example :
 
@@ -116,3 +116,12 @@
             });
         }
     };
+
+
+* Normalizing the Data
+
+    - Using "Normalizr" Library : https://github.com/paularmstrong/normalizr
+
+* Persisting State
+
+    - Using : https://github.com/rt2zz/redux-persist
