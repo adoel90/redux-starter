@@ -1,12 +1,14 @@
 import $ from 'jquery';
 import store from '../../store/store';
-import { addReceipent } from '../../action/recipe';
+import { addReceipent, fetchRecipes } from '../../action/recipe';
 
 function updateUI() {
     const { recipes } = store.getState();
     const renderRecipe = (recipe) => `<li>${ recipe.name }</li>`;
     
     $('.recipes > ul').html(recipes.map(renderRecipe));
+
+    // 
 };
 
  function handleAdd() {
@@ -30,6 +32,6 @@ export default function loadUI() {
 
     store.subscribe(updateUI);
     $(document).on('click', '.recipes > button', handleAdd);
-
+    store.dispatch(fetchRecipes());
     updateUI();
 };

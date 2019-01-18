@@ -1,11 +1,15 @@
 
 
-const ADD_RECIPE = 'ADD_RECIPE';
+import { ADD_RECIPE, SET_RECIPE, FETCH_RECIPES} from '../constants/action-types';
 
-const recipesReducer = (recipes, action) =>{
+const recipesReducer = (recipes = [], action) =>{
     switch (action.type){
         case ADD_RECIPE :
             return recipes.concat({name: action.name})
+
+        case SET_RECIPE:
+            return action.data.recipes
+
     }
 
     return recipes
