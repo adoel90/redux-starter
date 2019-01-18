@@ -124,3 +124,65 @@
 * Persisting State
 
     - Using : https://github.com/rt2zz/redux-persist
+
+* Real-World State
+
+    - Structure of a Common State
+
+    - Sample State 
+
+        const state = {
+            books: { },
+            recipes: { },
+            ingredients: { },
+            ui: {
+                activeRequests: 0
+            },
+            currentUser: {
+                name: 'Kipi',
+                accessToken: 'topsecrettoken'
+            }
+        };
+
+    - Keeping the State Manageable
+
+    - "To make things as simple as possible, it is best to have a reducer for each key in the base state"
+
+    - Large Nested state :
+
+        const state = {
+
+            db: {
+                books: { },
+                recipes: { },
+                ingredients: { },
+            },
+            local: {
+                ui: {
+                    activeRequests: 0
+                },
+                user: {
+                    name: 'Kipi',
+                    accessToken: 'topsecrettoken'
+                }
+            },
+            vendor: {
+                forms: {},
+                router: {}
+            }
+        };
+
+    - "This allows for easier management of the different parts when deciding what needs to be synced to
+        local storage, or when clearing stale data."
+
+    - What to Put in the State :
+
+        • Should this data be persisted across page refresh?
+        • Should this data be persisted across route changes?
+        • Is this data used in multiple places in the UI?
+
+        • Wajib ga data/state ini tetap ada meskipun page di refresh ?
+        • Wajib ga data/state ini tetap ada meskipun ROUTING Page berubah ?
+        • Apakah data ini di gunakan di multiple places in the UI ? 
+
+        "If the answer to any of these questions is “yes,” the data should go into the state. If the answer to all of these questions is “no,” it could still go into the state, but it’s not a must"
