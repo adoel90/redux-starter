@@ -51,72 +51,71 @@
 
     - Data returned from '/recipes/123, the data is "denormalized data"
 
-    {
-        id: 63,
-        name: 'Omelette',
-        favorite: true,
-        preparation: 'How to prepare...',
-        ingredients: [
-            {
-                id: 5123,
-                name: 'Egg',
-                quantity: 2
-            },
-            {
-                id: 729,
-                name: 'Milk',
-                quantity: '2 cups'
-            }
-        ]
-    };
+        {
+            id: 63,
+            name: 'Omelette',
+            favorite: true,
+            preparation: 'How to prepare...',
+            ingredients: [
+                {
+                    id: 5123,
+                    name: 'Egg',
+                    quantity: 2
+                },
+                {
+                    id: 729,
+                    name: 'Milk',
+                    quantity: '2 cups'
+                }
+            ]
+        };
 
 * Building the Generic Action
 
     - Sample UPDATE_DATA action with good data dummy structure to solve "denormalized data"
 
-    const updateData = ({
+        const updateData = ({
 
-        type: UPDATE_DATA,
-        payload: {
-            recipes: {
-                63: {
-                    id: 63,
-                    name: 'Omelette',
-                    favorite: true,
-                    preparation: 'How to prepare...',   
-                    ingredients: [5123, 729]
-                }
-            },
-            ingredients: {
-                5123: {
-                    id: 5123,
-                    name: 'Egg',
-                    quantity: 2
+            type: UPDATE_DATA,
+            payload: {
+                recipes: {
+                    63: {
+                        id: 63,
+                        name: 'Omelette',
+                        favorite: true,
+                        preparation: 'How to prepare...',   
+                        ingredients: [5123, 729]
+                    }
                 },
-                729: {
-                    id: 729,
-                    name: 'Milk',
-                    quantity: '2 cups'
+                ingredients: {
+                    5123: {
+                        id: 5123,
+                        name: 'Egg',
+                        quantity: 2
+                    },
+                    729: {
+                        id: 729,
+                        name: 'Milk',
+                        quantity: '2 cups'
+                    }
                 }
             }
-        }
-    });
+        });
 
     - Using this approach, our recipes reducer’s support for UPDATE_DATA can be as simple as
 
     - Recipes reducer support for UPDATE_DATA :
  
-    const recipesReducer = (state, action) => {
-        switch(action.type) {
-            case UPDATE_DATA:
-            if (!('recipes' in action.payload)) return state;
-            
-            return Object.assign({}, state, {
-                recipes: Object.assign({}, state.recipes, action.payload.recipes)
-            });
-        }
-    };
-
+        const recipesReducer = (state, action) => {
+            switch(action.type) {
+                case UPDATE_DATA:
+                if (!('recipes' in action.payload)) return state;
+                
+                return Object.assign({}, state, {
+                    recipes: Object.assign({}, state.recipes, action.payload.recipes)
+                });
+            }
+        };
 
 * Normalizing the Data
 
