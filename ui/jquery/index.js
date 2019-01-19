@@ -17,9 +17,7 @@ function updateUI() {
      store.dispatch(addReceipent($recipeName.val()));
      $recipeName.val('');
  }
-    
-    
-
+        
 export default function loadUI() {
     $('#app').append(`
         <div class="recipes">
