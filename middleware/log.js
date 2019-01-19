@@ -1,5 +1,5 @@
 const logMiddleware = ({getState, dispatch}) => (next) => (action) => {
-    console.log(`Action: ${ action.type}`);
+    console.log(`What happened : ${ action.type}`);
 
     next(action);
 }
